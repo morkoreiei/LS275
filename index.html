@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atlantic homepage</title>
+    <style>
+        .item-H{
+            grid-area:header;
+            height: 500px;
+            background: url(img/taley.png);
+            background-attachment: fixed;}
+        .item-Nav{
+            grid-area:nav;
+            height: 50px;
+            position: sticky;
+            top: 0px;
+            background-color: white;
+            display: inline;}
+        .item-L{grid-area: lside;
+                background-color: white;
+                height: 500px;
+                width: 250px;
+                margin-top: -6px;
+                position: sticky;
+                float: none;
+                top: 50px;
+                transform: translatex(-260px);
+                transition: 0.5s ease;
+                text-align: center;}
+        .item-M{grid-area: main;
+                background: url(img/Untitled\ design\ \(5\).png);
+                background-color: rgb(232, 232, 232);
+                height: 1000px;}
+        .item-F{grid-area: footer;
+                height: 300px;
+                background-color: #2d4854;}
+        .gridcontainer{
+            display: grid;
+            grid-template-areas:
+            'nav nav nav nav nav'
+            'header header header header header'
+            'main main main main main'
+            'footer footer footer footer footer';
+            background-color: bisque;
+            grid-gap:0px;
+            padding:0px;
+            border: 0px;}
+        .item{border:none;}
+        .trademark{font-size:120px;
+            margin-top: 100px;
+            margin-left: 50px;
+            color: whitesmoke;
+            font-family: Copperplate,Copperplate Gothic Light,fantasy;}
+        .button{margin-top: 15px;
+                margin-left: 10px;}
+        .trademarknav{
+            margin-top: 15px;
+            margin-left: 100px;
+            font-size: larger;
+            font-weight: bold;
+            font-family: Copperplate,Copperplate Gothic Light,fantasy;
+            color: rgb(19, 130, 130);}
+        .toggle{
+            height: 30px;
+            width: 30px;
+            background-color: rgb(255, 255, 255);
+            cursor: pointer;
+            z-index: 1px;
+            border-radius: 2px;
+            margin-left: 20px;
+            position: sticky;
+            top: 10px;}
+        .toggle .common{
+            position: absolute;
+            height: 2px;
+            width: 20px;
+            background-color: blueviolet;
+            border-radius: 50px;
+            transition: 0.3s ease;}
+        .toggle .topline{
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%,-50%);}
+        .toggle .midline{
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);}
+        .toggle .botline{
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%,-50%);}
+        input:checked ~ .toggle .topline{
+            left: 2px;
+            top: 14px; 
+            width: 25px;
+            transform: rotate(45deg);}
+        input:checked ~ .toggle .botline{
+            left: 2px;
+            top: 14px; 
+            width: 25px;
+            transform: rotate(-45deg);}
+        input:checked ~ .toggle .midline{
+            opacity: 0;
+            transform: translateX(0);}
+        input:checked ~ .item-L{
+            transform: translatex(0);}
+        input{display: none;
+            visibility: hidden;}
+        .label{margin-top: -2070px;
+            position: sticky;
+            top: 500px;
+            width: 50px;}
+        ul li{list-style: none;
+            margin-left: -40px;
+            text-align: center;}
+        ul li a{
+            color: rgb(19, 130, 130);
+            font-family: 'Poppins',sans-serif;
+            font-weight: 800;
+            display: block;
+            text-decoration: none;
+            transition: 0.2s ease-out;
+            padding: 15px 0;
+            text-transform: capitalize;}
+        ul li:hover a{
+                background-color: rgb(19, 130, 130);
+                color: white;}
+        .productcontainer{
+            background-color: antiquewhite;
+            height: auto;
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 10%;
+            grid-template-columns: 350px 350px 350px;
+            grid-template-rows: 450px auto auto;
+            display: grid;}
+        .product-item{
+                background-color: rgb(255, 255, 255);
+                border: 2px solid rgb(0, 0, 0);
+                padding: 10px;
+                font-size: 20px;
+                text-align: center;
+                height: 350px;}
+        .productname{
+            font-size: larger;
+            text-transform:capitalize;
+            color: rgb(19, 130, 130);
+            font-family: 'Poppins',sans-serif;
+            font-weight: 800;
+            margin-top: -5px;}
+        .proimg:hover{
+                opacity: 60%;
+                width: 260px;
+                height: 260px;
+                transition: 0.3s ease;}
+        .box-1{
+            display: flex;
+            width: 40%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            margin-top: -50px;
+            background-color: white;
+            transition: all .1s ease;
+            
+            margin-left: 100px;}
+        .box-2{
+            display: flex;
+            width: 40%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            background-color: white;
+            transition: all .1s ease;
+            
+            margin-left: 100px;}
+        .box-3{
+            display: flex;
+            width: 40%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            background-color: white;
+            transition: all .1s ease;
+            
+            margin-left: 100px;}
+        .box-4{
+            display: flex;
+            width: 40%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            margin-top: -510px;
+            background-color: white;
+            transition: all .1s ease;
+           
+            margin-left: 650px;}
+        .box-5{
+            display: flex;
+            width: 40%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            background-color: white;
+            transition: all .1s ease;
+            
+            margin-left: 650px;}
+        .box-6{
+            display: flex;
+            width: 40%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            background-color: white;
+            transition: all .1s ease;
+           
+            margin-left: 650px;}
+        .box img{
+            object-fit:cover;}
+        .productcontent{
+            padding: 20px;
+            width: 100%;}
+        .input{display: inline;
+            visibility: visible;}
+        .unit{
+            color: rgb(0, 0, 0);
+        }
+        .box-1:hover{ box-shadow: black 0 7px 29px 0;
+            transform: scale(1.02);}
+        .box-2:hover{ box-shadow: black 0 7px 29px 0;
+            transform: scale(1.02);}
+        .box-3:hover{ box-shadow: black 0 7px 29px 0;
+            transform: scale(1.02);}
+        .box-4:hover{ box-shadow: black 0 7px 29px 0;
+            transform: scale(1.02);}
+        .box-5:hover{ box-shadow: black 0 7px 29px 0;
+            transform: scale(1.02);}
+        .box-6:hover{ box-shadow: black 0 7px 29px 0;
+            transform: scale(1.02);v}
+        .kamproy{
+            font-size: 60px;
+            color:rgb(10, 78, 78);
+            font-family: 'Poppins',sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left:130px;}
+        .kamproy2{
+            font-size: 60px;
+            color: rgb(10, 78, 78);
+            font-family: 'Poppins',sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left:250px;
+            margin-top: -40px;}
+        .submit{display: inline;
+            visibility: visible;
+            margin-top:50px ;
+            margin-left: 80%;
+            display: flex;
+            width: 150px;
+            height: 70px;
+            color: rgb(255, 255, 255);
+            font-family: 'Poppins',sans-serif;
+            font-weight: 800;
+            background-color: rgb(19, 130, 130);
+            border: none;
+            font-size: 20px;
+            transition: 0.2s ease-out;
+            border-radius: 20px;}
+        .submit:hover{cursor: pointer;
+            transform: scale(1.03);
+            box-shadow: black 0 4px 18px 0;
+            background-color: white;
+            color: rgb(19, 130, 130);}
+        table{border:none;
+            width: 400px;
+            height: 150px;
+            margin-left: 700px;
+            margin-top: -170px;
+            text-align: center;
+            display: block;}
+        td{color: white;
+            font-size: 20px;}
+        .fbig {border-radius: 4px;
+            background-color: rgb(222, 222, 222);
+            border: none;
+            color: #ffffff;
+            text-align: center;
+            font-size: 10px;
+            padding: 5px;
+            width: fit-content;
+            height: fit-content;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 0px;
+            border-radius: 40px;}
+        .fbig:hover{
+            cursor: pointer;
+            background-color: #000000;}
+        th{width: 400px;
+            color: #ffffff;
+            font-size: 16px;
+            text-transform: capitalize;}
+        th,td{padding: 10px;
+            font-family: 'Poppins',sans-serif;
+            font-weight: 600;
+            font-size: 22px;}
+        .footertrademark{width: 400px;
+            color: #ffffff;
+            font-size: 35px;
+            font-weight: bold;
+            font-family: Copperplate,Copperplate Gothic Light,fantasy;
+            color: rgb(255, 255, 255);
+            margin-left: 40px;}
+        .address{font-family: 'Poppins',sans-serif;
+            font-weight: 200;
+            font-size: 20px;
+            margin-left: 25px;
+            color: #ffffff;}
+    </style>
+</head>
+<body style="margin:0px;">
+    <div class="gridcontainer">
+        <div class="item-Nav item">
+            <p class="trademarknav">atlantic shop</p>
+        </div>
+        <label class="label">
+            <input type="checkbox">
+            <div class="toggle">
+                <span class="topline common"></span>
+                <span class="midline common"></span>
+                <span class="botline common"></span>
+            </div>
+        <div class="item-L item">
+            <ul>
+                <li><a href="register.html">sign up</a></li>
+                <li><a href="">coming soon</a></li>
+                <li><a href="">coming soon</a></li>
+                <li><a href="">coming soon</a></li>
+                <li><a href="">coming soon</a></li>
+            </ul>
+        </div>
+        </label>
+        <div class="item-H item">
+            <p class="trademark">atlantic shop</p>
+        </div>
+        <div class="item-M item">
+            <p class="kamproy">get your resolution</p>
+            <p class="kamproy2">with wonderful things</p>
+            <form action="https://httpbin.org/post" method="post">
+            <div class="box-1">
+                <img src="img/1.png" alt="">
+                <div class="productcontent">
+                    <h1 class="productname">mysterious land</h1>
+                    <p class="unit">
+                        Discovered in 1389,The mysterious land with millions of hostile aborigins
+                        <br><br><label for="land">Quantity</label>
+                        <select name="land" id="land" class="input">
+                            <option value="0">-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></p>
+                </div>
+            </div>
+            <div class="box-2">
+                <img src="img/2.png" alt="">
+                <div class="productcontent">
+                    <h1 class="productname">mermaid</h1>
+                    <p class="unit">Antique mermaid incidentally found in rough ocean
+                        <br><br><label for="mermaid">Quantity</label>
+                        <select name="mermaid" id="mermaid" class="input">
+                            <option value="0">-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></p>
+                </div>
+            </div>
+            <div class="box-3">
+                <img src="img/3.png" alt="">
+                <div class="productcontent">
+                    <h1 class="productname">baby shark</h1>
+                    <p class="unit">Splendid walking baby shark with his amazing blue-leged
+                        <br><br><label for="shark">Quantity</label>
+                        <select name="shark" id="shark" class="input">
+                            <option value="0">-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></p>
+                </div>
+            </div>
+            <div class="box-4">
+                <img src="img/4.png" alt="">
+                <div class="productcontent">
+                    <h1 class="productname">asian food</h1>
+                    <p class="unit">A food,which has capacity of moving,is always affraid of being devoured 
+                        <br><br><label for="food">Quantity</label>
+                        <select name="food" id="food" class="input">
+                            <option value="0">-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></p>
+                    
+                </div>
+            </div>
+            <div class="box-5">
+                <img src="img/5.png" alt="">
+                <div class="productcontent">
+                    <h1 class="productname">slave</h1>
+                    <p class="unit">No information found
+                        <br><br><br><label for="slave">Quantity</label>
+                        <select name="slave" id="slave" class="input">
+                            <option value="0">-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></p>
+                </div>
+            </div>
+            <div class="box-6">
+                <img src="img/6.png" alt="">
+                <div class="productcontent">
+                    <h1 class="productname">galleon</h1>
+                    <p class="unit">Jean,Panukorn's massive tangible leisure activity
+                        <br><br><br><label for="galleon">Quantity</label>
+                        <select name="galleon" id="galleon" class="input">
+                            <option value="0">-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select></p>
+                </div>
+            </div>
+            <div class="submitbox"><input type="submit" class="submit" value="Check out"></div>
+        </form>
+        </div>
+    <div class="item-F item">
+        <p class="footertrademark">atlantic shop</p>
+        <address><p class="address">99 หมู่ที่ 18 ถ. พหลโยธิน <br>
+            ตำบล คลองหนึ่ง อำเภอคลองหลวง <br>ปทุมธานี 12120
+        </p></address>
+        <table>
+            <th>contact</th>
+            <th>Tel</th>
+            <tr>
+                <td>
+                    <a href="https://www.facebook.com/brainlessboi.yakpenkonteethurrak" target="_blank"><button class="fbig"><img src="img/facebook.png" style="height: 50px"></button></a></td>
+                
+                <td>+66 95670889</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.instagram.com/jean.morkor/" target="_blank"><button class="fbig"><img src="img/Instagram-logo-transparent-PNG-removebg-preview.png" style="height: 50px"></button></a></td>
+                <td>atlanticshop@gmail.com</td>
+            </tr>
+            
+        </table>
+        
+    </div>
+    </div>
+</body>
+</html>
